@@ -1,10 +1,10 @@
 <div class="location-weather-information-section">
   <div class="location-weather-information-section-actions">
-    <app-location-weather-upper-section></app-location-weather-upper-section>
+    <app-location-weather-upper-section [upperSectionData]="cityCurrentWeather"></app-location-weather-upper-section>
   </div>
-  <div class="location-weather-information-section-body">
+  <div class="location-weather-information-section-body" *ngIf="cityCurrentWeather">
     <div class="location-weather-big-text">
-      <h1>PlaceHolder!</h1>
+      <h1>{{cityCurrentWeather.WeatherText}}</h1>
     </div>
     <div class="location-weather-forcast-items">
       <app-forcast-location-item *ngFor="let forcastItem of [1,2,3,4,5]"></app-forcast-location-item>

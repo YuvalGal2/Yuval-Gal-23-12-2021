@@ -4,6 +4,8 @@ export interface City {
   "Type": string,
   "Rank": number,
   "LocalizedName": string
-  "Country": {},
+  "Country": {
+    ID: string;
+  },
   "AdministrativeArea": {}
 }

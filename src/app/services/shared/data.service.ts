@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import {Observable, of} from 'rxjs';
 import {HttpClient} from '@angular/common/http';
+import {environment} from '../../../environments/environment';
 
 @Injectable({
   providedIn: 'root'
@@ -22,7 +23,8 @@ export class DataService {
     return of ('Error!');
   }
 
-  private getData(requestUrl: string,  requestParams: {}): Observable<any> {
+  private getData(requestUrl: string,  requestParams: any = {}): Observable<any> {
+    requestParams.apikey = environment.weatherAppAPIKey;
     if (requestParams) {
       requestParams = this.serialize(requestParams);
       requestUrl = `${requestUrl}?${requestParams}`;

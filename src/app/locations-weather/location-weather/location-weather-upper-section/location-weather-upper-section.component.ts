@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 
 @Component({
   selector: 'app-location-weather-upper-section',
@@ -6,10 +6,16 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./location-weather-upper-section.component.scss']
 })
 export class LocationWeatherUpperSectionComponent implements OnInit {
+  @Input('upperSectionData') upperSectionData: any;
 
   constructor() { }
 
   ngOnInit(): void {
+    this.upperSectionData = {
+      "Temperature": this.upperSectionData.Temperature,
+      "WeatherText": this.upperSectionData.WeatherText,
+      "Country": this.upperSectionData.CountryId
+    }
   }
 
 }

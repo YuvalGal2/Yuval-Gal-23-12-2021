@@ -10,7 +10,11 @@
 .location-weather-image {
   height: 100px;
   width: 100%;
-  background-color:green;
+  overflow: hidden;
+  img {
+    width: 90%;
+    height: auto;
+  }
 }
 
 .location-weather-small-details {

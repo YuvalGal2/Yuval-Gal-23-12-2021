@@ -36,7 +36,6 @@ export class SearchService {
 
       this.dataService
         .sendRequest('http://dataservice.accuweather.com/locations/v1/cities/autocomplete', 'get', {
-          apikey: environment.weatherAppAPIKey,
           q: query
         })
         .subscribe((res: City[]) => {

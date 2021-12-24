@@ -1,7 +1,9 @@
 <div class="location-weather-small-wrapper">
-  <div class="location-weather-image"></div>
+  <div class="location-weather-image">
+    <img src="{{codeToFlagCDN}}/{{upperSectionData.countryId | lowercase}}.png" >
+  </div>
   <div class="location-weather-small-details">
-    <p>Detail1</p>
-    <p>Detail2</p>
+    <p>{{upperSectionData.WeatherText}}</p>
+    <p>{{upperSectionData.Temperature.Metric.Value}}{{upperSectionData.Temperature.Metric.Unit}}</p>
   </div>
 </div>
