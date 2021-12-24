@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 
 @Component({
   selector: 'app-forcast-location-item',
@@ -6,7 +6,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./forcast-location-item.component.scss']
 })
 export class ForcastLocationItemComponent implements OnInit {
-
+  @Input('forcastData') forcastData: any;
   constructor() { }
 
   ngOnInit(): void {

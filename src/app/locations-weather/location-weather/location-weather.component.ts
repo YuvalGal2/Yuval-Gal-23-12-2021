@@ -10,21 +10,34 @@ import {environment} from '../../../environments/environment';
 export class LocationWeatherComponent implements OnInit{
   @Input('cityData') cityData: City
   cityCurrentWeather: any;
+  forcastData: any;
   constructor(private locationWeatherService: LocationWeatherService) { }
 
   ngOnInit() {
     this.fetchCurrentWeatherForLocation();
+    this.fetchLocationForcast();
+  }
+
+  handleMockData(payload: any): any{
+    if (environment.useMockData) {
+      return payload.filter((dataObject: any) => dataObject.cityKey === this.cityData.Key)[0];
+    }
+    else {
+      return payload;
+    }
+  }
+  fetchLocationForcast() {
+    this.locationWeatherService.getForcastForLocation(this.cityData.Key).subscribe((forcastData) => {
+      this.forcastData = this.handleMockData(forcastData);
+      console.log(this.forcastData);
+    })
   }
   fetchCurrentWeatherForLocation() {
     this.locationWeatherService.getCurrentWeatherForLocation(this.cityData.Key).subscribe((cityCurrentWeather) => {
-      if (environment.useMockData) {
-        this.cityCurrentWeather = cityCurrentWeather.filter((dataObject: any) => dataObject.cityKey === this.cityData.Key)[0];
+      this.cityCurrentWeather = this.handleMockData(cityCurrentWeather);
+      if (this.cityCurrentWeather) {
+        this.cityCurrentWeather.countryId = this.cityData.Country.ID;
       }
-      else {
-        this.cityCurrentWeather = cityCurrentWeather;
-
-      }
-      this.cityCurrentWeather.countryId = this.cityData.Country.ID;
     })
   }
 }

@@ -6,8 +6,8 @@
     <div class="location-weather-big-text">
       <h1>{{cityCurrentWeather.WeatherText}}</h1>
     </div>
-    <div class="location-weather-forcast-items">
-      <app-forcast-location-item *ngFor="let forcastItem of [1,2,3,4,5]"></app-forcast-location-item>
+    <div class="location-weather-forcast-items" *ngIf="forcastData">
+      <app-forcast-location-item *ngFor="let forcastItem of forcastData.DailyForecasts" [forcastData]="forcastItem"></app-forcast-location-item>
     </div>
   </div>
 </div>
