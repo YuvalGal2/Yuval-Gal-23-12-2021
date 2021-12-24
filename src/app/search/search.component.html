@@ -1,1 +1,6 @@
-<p>search works!</p>
+<form class="search-form" [formGroup]="searchForm">
+  <mat-form-field class="search-input">
+    <mat-label>Search City</mat-label>
+    <input matInput (keyup)="onKeypress()" placeholder="{{defaultSearchValue}}" value="{{defaultSearchValue}}"  formControlName="search">
+  </mat-form-field>
+</form>

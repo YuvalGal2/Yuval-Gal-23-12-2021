@@ -1,0 +1,19 @@
+@import "../scss/variables";
+.search-form {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+.search-input {
+  width: 70%;
+  font-size: 1.15rem;
+}
+
+@media(min-width: $max-size-mobile) {
+  .search-form {
+    margin-top:30px;
+  }
+  .search-input {
+    width:40%;
+  }
+}

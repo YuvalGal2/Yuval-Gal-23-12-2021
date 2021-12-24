@@ -1,0 +1,32 @@
+@import "../../scss/variables";
+
+.location-weather-information-section {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  min-height: 400px;
+  border:1px solid black;
+}
+
+.location-weather-forcast-items {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.location-weather-big-text {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top:30px;
+}
+@media(min-width:$max-size-xs-mobile) {
+  .location-weather-big-text h1 {
+    font-size: 2.8rem;
+  }
+}
+@media(min-width: $max-size-tablet) {
+  .location-weather-forcast-items {
+    flex-direction: row;
+  }
+}

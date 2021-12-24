@@ -1,0 +1,15 @@
+@import "../../../scss/variables";
+.location-weather-upper-section-wrapper {
+  display: flex;
+  width: 100%;
+  min-height: 60px;
+  flex-direction: column;
+
+
+}
+@media(min-width: $max-size-mobile) {
+  .location-weather-upper-section-wrapper {
+    flex-direction: row;
+    justify-content: space-between;
+  }
+}

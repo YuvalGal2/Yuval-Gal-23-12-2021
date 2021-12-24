@@ -1,14 +1,14 @@
 [
   {
   "label": "Home",
-  "icon": "slideshow",
+  "icon": "home",
   "showOnMobile": true,
   "showOnTablet": true,
   "showOnDesktop": true
   },
   {
   "label": "Favorites",
-  "icon": "rss_feed",
+  "icon": "favorite",
   "showOnMobile": true,
   "showOnTablet": true,
   "showOnDesktop": true
