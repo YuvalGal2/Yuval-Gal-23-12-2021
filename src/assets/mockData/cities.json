@@ -1,0 +1,77 @@
+[
+  {
+    "Version": 1,
+    "Key": "215854",
+    "Type": "City",
+    "Rank": 31,
+    "LocalizedName": "Tel Aviv",
+    "Country": {
+      "ID": "IL",
+      "LocalizedName": "Israel"
+    },
+    "AdministrativeArea": {
+      "ID": "TA",
+      "LocalizedName": "Tel Aviv"
+    }
+  },
+  {
+    "Version": 1,
+    "Key": "338870",
+    "Type": "City",
+    "Rank": 85,
+    "LocalizedName": "New York Mills",
+    "Country": {
+      "ID": "US",
+      "LocalizedName": "United States"
+    },
+    "AdministrativeArea": {
+      "ID": "MN",
+      "LocalizedName": "Minnesota"
+    }
+  },
+  {
+    "Version": 1,
+    "Key": "2128074",
+    "Type": "City",
+    "Rank": 85,
+    "LocalizedName": "New York Mills",
+    "Country": {
+      "ID": "US",
+      "LocalizedName": "United States"
+    },
+    "AdministrativeArea": {
+      "ID": "NY",
+      "LocalizedName": "New York"
+    }
+  },
+  {
+    "Version": 1,
+    "Key": "2126946",
+    "Type": "City",
+    "Rank": 285,
+    "LocalizedName": "New York Township",
+    "Country": {
+      "ID": "US",
+      "LocalizedName": "United States"
+    },
+    "AdministrativeArea": {
+      "ID": "MO",
+      "LocalizedName": "Missouri"
+    }
+  },
+  {
+    "Version": 1,
+    "Key": "2642589",
+    "Type": "City",
+    "Rank": 285,
+    "LocalizedName": "New York Precinct",
+    "Country": {
+      "ID": "US",
+      "LocalizedName": "United States"
+    },
+    "AdministrativeArea": {
+      "ID": "NE",
+      "LocalizedName": "Nebraska"
+    }
+  }
+]

@@ -1,0 +1,16 @@
+[
+  {
+  "label": "Home",
+  "icon": "slideshow",
+  "showOnMobile": true,
+  "showOnTablet": true,
+  "showOnDesktop": true
+  },
+  {
+  "label": "Favorites",
+  "icon": "rss_feed",
+  "showOnMobile": true,
+  "showOnTablet": true,
+  "showOnDesktop": true
+  }
+]
