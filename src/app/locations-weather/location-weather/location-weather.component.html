@@ -1,13 +1,15 @@
-<div class="location-weather-information-section">
-  <div class="location-weather-information-section-actions">
-    <app-location-weather-upper-section [upperSectionData]="cityCurrentWeather"></app-location-weather-upper-section>
-  </div>
-  <div class="location-weather-information-section-body" *ngIf="cityCurrentWeather">
-    <div class="location-weather-big-text">
-      <h1>{{cityCurrentWeather.WeatherText}}</h1>
+<div class="weather-location-wrapper">
+  <div class="location-weather-information-section">
+    <div class="location-weather-information-section-actions">
+      <app-location-weather-upper-section [upperSectionData]="cityCurrentWeather"></app-location-weather-upper-section>
     </div>
-    <div class="location-weather-forcast-items" *ngIf="forcastData">
-      <app-forcast-location-item *ngFor="let forcastItem of forcastData.DailyForecasts" [forcastData]="forcastItem"></app-forcast-location-item>
+    <div class="location-weather-information-section-body" *ngIf="cityCurrentWeather">
+      <div class="location-weather-big-text">
+        <h1>{{cityCurrentWeather.WeatherText}}</h1>
+      </div>
+      <div class="location-weather-forcast-items" *ngIf="forcastData">
+        <app-forcast-location-item *ngFor="let forcastItem of forcastData.DailyForecasts" [forcastData]="forcastItem"></app-forcast-location-item>
+      </div>
     </div>
   </div>
 </div>

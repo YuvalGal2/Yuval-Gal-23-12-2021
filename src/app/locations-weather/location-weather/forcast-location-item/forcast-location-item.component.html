@@ -1,7 +1,13 @@
 <div class="forcast-location-item-wrapper">
   <div class="forcast-location-content-wrapper">
-    <p>Stupid city name</p>
-    <p>Stupid temp name</p>
-    <p>Stupid weather name</p>
+    <p>{{forcastData.dateOnly}}</p>
+    <div>
+      <p>
+        {{forcastData.Temperature.Maximum.Value}}{{forcastData.Temperature.Maximum.Unit}}
+        -
+        {{forcastData.Temperature.Minimum.Value}}{{forcastData.Temperature.Maximum.Unit}}
+      </p>
+    </div>
+    <p>{{forcastData.Day.ShortPhrase}}</p>
   </div>
 </div>

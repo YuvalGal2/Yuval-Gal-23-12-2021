@@ -9,7 +9,16 @@ export class ForcastLocationItemComponent implements OnInit {
   @Input('forcastData') forcastData: any;
   constructor() { }
 
+  private getDayName(dateStr: string): string  {
+    const date = new Date(dateStr);
+    return date.toLocaleDateString('en-US', { weekday: 'long' });
+  }
+  private trimDateFromDataObject() {
+    this.forcastData.dateOnly = this.forcastData.Date.split('T');
+  }
   ngOnInit(): void {
+    this.forcastData.dateOnly = this.getDayName(this.forcastData.Date);
+    console.log(this.forcastData.dateOnly );
   }
 
 }

@@ -5,7 +5,7 @@
 export const environment = {
   production: false,
   weatherAppAPIKey: '76qrCG0xwAAXVpHihlalvFyZ5IpTAIVg',
-  useMockData: true,
+  useMockData: false,
   appName: 'My Cool app in dev'
 };
 

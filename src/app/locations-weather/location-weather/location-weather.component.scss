@@ -1,11 +1,17 @@
 @import "../../scss/variables";
+.weather-location-wrapper {
+  display: flex;
+  justify-content: center;
 
+}
 .location-weather-information-section {
   display: flex;
   flex-direction: column;
   width: 100%;
-  min-height: 400px;
-  border:1px solid black;
+  height: auto;
+  border:1px solid $color-light-grey;
+  border-radius: 7px;
+  padding: 15px;
 }
 
 .location-weather-forcast-items {
@@ -18,8 +24,18 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-top:30px;
+  margin-top:15px;
 }
+
+app-forcast-location-item {
+  display: flex;
+  justify-content: center;
+  flex-basis: 100%;
+  padding: 15px;
+  border:1px solid $color-light-grey;
+  margin: 15px 8px 0px 8px;
+}
+
 @media(min-width:$max-size-xs-mobile) {
   .location-weather-big-text h1 {
     font-size: 2.8rem;
@@ -28,5 +44,26 @@
 @media(min-width: $max-size-tablet) {
   .location-weather-forcast-items {
     flex-direction: row;
+  }
+
+  app-forcast-location-item {
+    flex-basis: 50%;
+  }
+
+}
+
+@media(min-width: $max-size-desktop) {
+  .location-weather-information-section {
+    width: 60%;
+  }
+  app-forcast-location-item {
+    flex-basis: 20%;
+  }
+}
+
+
+@media(min-width: $max-size-large-screen) {
+  .location-weather-information-section {
+    width: 50%;
   }
 }
