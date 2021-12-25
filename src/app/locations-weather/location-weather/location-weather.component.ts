@@ -29,16 +29,19 @@ export class LocationWeatherComponent implements OnInit{
   fetchLocationForcast() {
     this.locationWeatherService.getForcastForLocation(this.cityData.Key).subscribe((forcastData) => {
       this.forcastData = this.handleMockData(forcastData);
-      console.log(this.forcastData);
       //
     })
   }
   fetchCurrentWeatherForLocation() {
     this.locationWeatherService.getCurrentWeatherForLocation(this.cityData.Key).subscribe((cityCurrentWeather) => {
-      this.cityCurrentWeather = this.handleMockData(cityCurrentWeather)[0];
+      if (!environment.useMockData) {
+        this.cityCurrentWeather = this.handleMockData(cityCurrentWeather)[0];
+      }
+      this.cityCurrentWeather = this.handleMockData(cityCurrentWeather);
       console.log(this.cityCurrentWeather);
       if (this.cityCurrentWeather) {
         this.cityCurrentWeather.countryId = this.cityData.Country.ID;
+        this.cityCurrentWeather.cityName = this.cityData.LocalizedName;;
       }
     })
   }

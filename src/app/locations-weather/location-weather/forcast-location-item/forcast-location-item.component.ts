@@ -18,7 +18,6 @@ export class ForcastLocationItemComponent implements OnInit {
   }
   ngOnInit(): void {
     this.forcastData.dateOnly = this.getDayName(this.forcastData.Date);
-    console.log(this.forcastData.dateOnly );
   }
 
 }

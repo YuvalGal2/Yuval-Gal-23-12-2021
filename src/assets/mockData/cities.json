@@ -58,20 +58,5 @@
       "ID": "MO",
       "LocalizedName": "Missouri"
     }
-  },
-  {
-    "Version": 1,
-    "Key": "2642589",
-    "Type": "City",
-    "Rank": 285,
-    "LocalizedName": "New York Precinct",
-    "Country": {
-      "ID": "US",
-      "LocalizedName": "United States"
-    },
-    "AdministrativeArea": {
-      "ID": "NE",
-      "LocalizedName": "Nebraska"
-    }
   }
 ]

@@ -1,6 +1,6 @@
 <div class="location-weather-small-wrapper">
   <div class="location-weather-image">
-    <img src="{{codeToFlagCDN}}/{{upperSectionData.countryId | lowercase}}.png" >
+    <img [src]="linkToFlag" >
   </div>
   <div class="location-weather-small-details">
     <p>{{upperSectionData.WeatherText}}</p>
