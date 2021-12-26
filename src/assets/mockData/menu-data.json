@@ -1,5 +1,6 @@
 [
   {
+  "link":"/",
   "label": "Home",
   "icon": "home",
   "showOnMobile": true,
@@ -7,6 +8,7 @@
   "showOnDesktop": true
   },
   {
+  "link":"/favorites",
   "label": "Favorites",
   "icon": "favorite",
   "showOnMobile": true,

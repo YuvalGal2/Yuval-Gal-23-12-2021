@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 
 @Component({
   selector: 'app-location-weather-actions',
@@ -6,10 +6,11 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./location-weather-actions.component.scss']
 })
 export class LocationWeatherActionsComponent implements OnInit {
-
+  @Input('locationkey') locationkey: string;
   constructor() { }
 
   ngOnInit(): void {
+
   }
 
 }

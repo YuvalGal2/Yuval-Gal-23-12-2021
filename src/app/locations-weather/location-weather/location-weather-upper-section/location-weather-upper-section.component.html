@@ -2,7 +2,7 @@
   <div class="location-weather-currently-selected">
     <app-location-weather-small [upperSectionData]="upperSectionData" *ngIf="upperSectionData"></app-location-weather-small>
   </div>
-  <div class="location-weather-actions-wrapper">
-    <app-location-weather-actions></app-location-weather-actions>
+  <div class="location-weather-actions-wrappera">
+    <app-location-weather-actions *ngIf="upperSectionData" [locationkey]="upperSectionData.Key"></app-location-weather-actions>
   </div>
 </div>

@@ -12,9 +12,7 @@ export class LocationWeatherSmallComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
-    console.log(this.upperSectionData);
-    //
-    this.linkToFlag = `${this.codeToFlagCDN}/${this.upperSectionData.countryId.toLowerCase()}.png`;
+    this.linkToFlag = `${this.codeToFlagCDN}/${this.upperSectionData.Country.toLowerCase()}.png`;
   }
 
 }

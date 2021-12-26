@@ -1,7 +1,7 @@
 <div class="weather-location-wrapper">
   <div class="location-weather-information-section">
     <div class="location-weather-information-section-actions">
-      <app-location-weather-upper-section [upperSectionData]="cityCurrentWeather"></app-location-weather-upper-section>
+      <app-location-weather-upper-section [upperSectionData]="cityCurrentWeather" *ngIf="cityCurrentWeather"></app-location-weather-upper-section>
     </div>
     <div class="location-weather-information-section-body" *ngIf="cityCurrentWeather">
       <div class="location-weather-big-text">

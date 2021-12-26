@@ -13,11 +13,11 @@ export class LocationWeatherUpperSectionComponent implements OnInit {
   ngOnInit(): void {
     if (this.upperSectionData) {
       this.upperSectionData = {
+        "Key": this.upperSectionData.Key ?? this.upperSectionData.cityKey,
         "Temperature": this.upperSectionData.Temperature,
         "WeatherText": this.upperSectionData.WeatherText,
-        "Country": this.upperSectionData.CountryId
+        "Country": this.upperSectionData.countryId
       }
     }
   }
-
 }

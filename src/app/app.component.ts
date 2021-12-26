@@ -20,6 +20,7 @@ export class AppComponent implements OnInit{
 
   ngOnInit() {
     this.fetchMenuData();
+    this.stateService.getFavoritesLocations();
   }
 
   fetchMenuData(): void {
