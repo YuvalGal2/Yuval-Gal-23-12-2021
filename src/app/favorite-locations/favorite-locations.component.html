@@ -1,5 +1,8 @@
 <div class="favs-container">
-    <div class="fav-container" *ngFor="let x of [1,2,3,4,5,6,7,8]">
-      <app-favorite-location ></app-favorite-location>
+    <div class="no-favs-container" *ngIf="favoritesLocationsKeys.length === 0">
+      <h1>Opps! It's seems you don't have anything here yet!</h1>
+    </div>
+    <div class="fav-container" *ngFor="let favoriteLocation of favoritesLocationsKeys">
+      <app-favorite-location [locationKey]="favoriteLocation.Key" ></app-favorite-location>
     </div>
 </div>

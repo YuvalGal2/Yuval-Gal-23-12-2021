@@ -8,6 +8,9 @@
   width: 70%;
   font-size: 1.15rem;
 }
+.text-danger {
+  color: $danger-red;
+}
 
 @media(min-width: $max-size-mobile) {
   .search-form {

@@ -1,5 +1,5 @@
 import {AfterViewInit, ChangeDetectorRef, Component} from '@angular/core';
-import {FormControl, FormGroup} from '@angular/forms';
+import {FormControl, FormGroup, Validators} from '@angular/forms';
 import {SearchService} from '../services/search.service';
 
 @Component({
@@ -10,7 +10,10 @@ import {SearchService} from '../services/search.service';
 export class SearchComponent implements AfterViewInit {
   defaultSearchValue: string = 'Tel Aviv';
   searchForm = new FormGroup({
-    search: new FormControl(this.defaultSearchValue),
+    search: new FormControl(this.defaultSearchValue, [
+      Validators.required,
+      Validators.pattern('^[a-zA-Z ]*$')
+    ]),
   });
   constructor(private searchService: SearchService) { }
 
@@ -23,8 +26,10 @@ export class SearchComponent implements AfterViewInit {
     }
   }
   private isValidText(): boolean {
-    // todo: add here some logic
-    return true;
+    if (this.searchForm.valid) {
+      return true;
+    }
+    return false;
   }
 
   private updateTypedData(): void {

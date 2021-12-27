@@ -4,6 +4,19 @@ export interface City {
   "Type": string,
   "Rank": number,
   "LocalizedName": string
+  "WeatherText"?: string,
+  "Temperature"?: {
+    Metric?: {
+      "Unit": string,
+      "UnitType": number
+      "Value": number
+    },
+    "Imperial?":{
+      "Unit": string,
+      "UnitType": number
+      "Value": number
+    }
+  }
   "Country": {
     ID: string;
   },

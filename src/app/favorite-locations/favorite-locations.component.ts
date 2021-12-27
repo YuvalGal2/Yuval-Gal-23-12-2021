@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {LocationWeatherService} from '../services/location-weather.service';
 
 @Component({
   selector: 'app-favorite-locations',
@@ -6,10 +7,10 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./favorite-locations.component.scss']
 })
 export class FavoriteLocationsComponent implements OnInit {
-
-  constructor() { }
-
+  constructor(private locationWeatherService: LocationWeatherService) { }
+  favoritesLocationsKeys: {Key:string}[]; //
   ngOnInit(): void {
+    this.favoritesLocationsKeys = this.locationWeatherService.getFavoritesLocationsList();
   }
 
 }

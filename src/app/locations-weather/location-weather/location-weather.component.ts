@@ -35,8 +35,9 @@ export class LocationWeatherComponent implements OnInit{
     this.locationWeatherService.getCurrentWeatherForLocation(this.cityData.Key).subscribe((cityCurrentWeather) => {
       if (!environment.useMockData) {
         this.cityCurrentWeather = this.handleMockData(cityCurrentWeather)[0];
+      } else {
+        this.cityCurrentWeather = this.handleMockData(cityCurrentWeather);
       }
-      this.cityCurrentWeather = this.handleMockData(cityCurrentWeather);
       if (this.cityCurrentWeather) {
         this.cityCurrentWeather.countryId = this.cityData.Country.ID;
         this.cityCurrentWeather.cityName = this.cityData.LocalizedName;

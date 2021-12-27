@@ -29,6 +29,7 @@ export class SearchService {
     }
 
   }
+
   fetchData(query: string): void {
     if (environment.useMockData) {
       this.fetchFakeData(query);

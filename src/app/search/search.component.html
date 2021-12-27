@@ -1,6 +1,13 @@
 <form class="search-form" [formGroup]="searchForm">
   <mat-form-field class="search-input">
-    <mat-label>Search City</mat-label>
+    <mat-label>Search City
+      <small class="text-danger"  *ngIf="searchForm.get('search')?.hasError('pattern')">
+         - Only English Letters are allowed!
+      </small>
+      <small class="text-danger"  *ngIf="searchForm.get('search')?.hasError('required')">
+        - This field is required!
+      </small>
+    </mat-label>
     <input matInput (keyup)="onKeypress()" placeholder="{{defaultSearchValue}}" value="{{defaultSearchValue}}"  formControlName="search">
   </mat-form-field>
 </form>

@@ -12,12 +12,11 @@ export class LocationWeatherUpperSectionComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
-    console.log(this.cityKey);
     if (this.upperSectionData) {
       this.upperSectionData = {
         "Key": this.cityKey,
-        "Temperature": this.upperSectionData[0].Temperature,
-        "WeatherText": this.upperSectionData[0].WeatherText,
+        "Temperature": this.upperSectionData.Temperature,
+        "WeatherText": this.upperSectionData.WeatherText,
         "Country": this.upperSectionData.countryId
       }
     }
