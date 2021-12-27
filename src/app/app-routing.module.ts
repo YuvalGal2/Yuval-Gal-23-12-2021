@@ -5,6 +5,7 @@ import {FavoriteLocationsComponent} from './favorite-locations/favorite-location
 
 const routes: Routes = [
   {path:'', component: LocationsWeatherComponent},
+  {path: 'favorites-details/:favClicked', component: LocationsWeatherComponent },
   {path:'favorites', component: FavoriteLocationsComponent}
 ];
 

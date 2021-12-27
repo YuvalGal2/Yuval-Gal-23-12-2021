@@ -1,6 +1,7 @@
-import {AfterViewInit, ChangeDetectorRef, Component} from '@angular/core';
+import {AfterViewInit, ChangeDetectorRef, Component, Input, OnInit} from '@angular/core';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
 import {SearchService} from '../services/search.service';
+import {ActivatedRoute} from '@angular/router';
 
 @Component({
   selector: 'app-search',
@@ -8,6 +9,8 @@ import {SearchService} from '../services/search.service';
   styleUrls: ['./search.component.scss']
 })
 export class SearchComponent implements AfterViewInit {
+  @Input('useDefault') useDefault: boolean;
+  @Input('specificCityKey') specificCityKey: string;
   defaultSearchValue: string = 'Tel Aviv';
   searchForm = new FormGroup({
     search: new FormControl(this.defaultSearchValue, [
@@ -16,9 +19,13 @@ export class SearchComponent implements AfterViewInit {
     ]),
   });
   constructor(private searchService: SearchService) { }
-
   ngAfterViewInit(): void {
-    this.updateTypedData();
+    if (this.useDefault ) {
+      this.updateTypedData();
+    }
+    else {
+      this.updateTypedData(this.specificCityKey);
+    }
   }
   onKeypress(): void {
     if (this.isValidText()) {
@@ -31,8 +38,10 @@ export class SearchComponent implements AfterViewInit {
     }
     return false;
   }
-
-  private updateTypedData(): void {
+  private updateTypedData(key: string = ''): void {
+    if (key.length > 0 ) {
+      return this.searchService.setSearchObserable('',key);
+    }
     this.searchService.setSearchObserable(this.searchForm.value.search)
   }
 }

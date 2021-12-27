@@ -10,41 +10,40 @@ import {City} from '../models/city.model';
 export class SearchService {
   private searchObs = new Subject<string>();
   private readonly citiesAPI: string = "http://dataservice.accuweather.com/locations/v1/cities/autocomplete";
+  private readonly citiesByKeyAPI: string = "http://dataservice.accuweather.com/locations/v1";
   constructor(private dataService: DataService,
               private stateService: StateService) { }
 
-  setSearchObserable(query: string): void {
+  setSearchObserable(query: string, key: string = ''): void {
     this.searchObs.next(query);
-    this.fetchData(query);
+    this.fetchData(query, key);
   }
-  fetchFakeData(query: string): void {
-    if (query.trim().length > 0)  {
-      this.dataService.sendRequest('./assets/mockData/cities.json', 'get').subscribe((res: City[]) => {
-        const relevantCitiesOnly: City[] = res.filter((city: City) => city.LocalizedName.includes(query));
-        this.stateService.setLocationWeatherData(relevantCitiesOnly);
+
+  private fetchDataByQuery(query: string) {
+    this.dataService
+      .sendRequest(this.citiesAPI, 'get', {
+        q: query
+      })
+      .subscribe((res: City[]) => {
+        this.stateService.setLocationWeatherData(res);
       }, (error) => {
-        // todo: handle error in request. - use modal.
-        console.log(error.status)
+        this.dataService.emitRequestError(error);
       });
-    }
-
+  }
+  private fetchDataByKey(key: string) {
+    this.dataService
+      .sendRequest(`${this.citiesByKeyAPI}/${key}`, 'get', {})
+      .subscribe((res: City) => {
+        this.stateService.setLocationWeatherData([res]);
+      }, (error) => {
+        this.dataService.emitRequestError(error);
+      });
   }
 
-  fetchData(query: string): void {
-    if (environment.useMockData) {
-      this.fetchFakeData(query);
-    } else {
-
-      this.dataService
-        .sendRequest('http://dataservice.accuweather.com/locations/v1/cities/autocomplete', 'get', {
-          q: query
-        })
-        .subscribe((res: City[]) => {
-          this.stateService.setLocationWeatherData(res);
-        }, (error) => {
-          this.stateService.setLocationWeatherData();
-          console.log(error.status)
-        });
+  fetchData(query: string, specificKey: string = ''): void {
+    if (specificKey.length === 0) {
+    return this.fetchDataByQuery(query);
     }
-  }
+    return this.fetchDataByKey(specificKey);
+    }
 }
