@@ -1,8 +1,8 @@
 <div class="location-weather-upper-section-wrapper">
   <div class="location-weather-currently-selected">
-    <app-location-weather-small [upperSectionData]="upperSectionData" *ngIf="upperSectionData"></app-location-weather-small>
+    <app-location-weather-small [upperSectionData]="upperSectionData"></app-location-weather-small>
   </div>
   <div class="location-weather-actions-wrappera">
-    <app-location-weather-actions *ngIf="upperSectionData" [locationkey]="upperSectionData.Key"></app-location-weather-actions>
+    <app-location-weather-actions *ngIf="this.cityKey" [locationkey]="this.cityKey"></app-location-weather-actions>
   </div>
 </div>

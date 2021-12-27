@@ -1,6 +1,31 @@
-.location-weather-wrapper {
+@import "../scss/variables";
+
+.favs-container {
   display: flex;
-  justify-content: center;
+  flex-basis: 100%;
+  margin-top: 20px;
   flex-direction: column;
-  background-color:red;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  padding: 15px;
+}
+
+
+.fav-container {
+  margin-top :15px;
+  border: 1px solid red;
+  width: 90%;
+}
+
+@media(min-width: $max-size-tablet) {
+  .fav-container {
+    width: 50%;
+  }
+
+}
+@media(min-width: $max-size-tablet) {
+  .favs-container {
+    flex-direction: row;
+  }
 }

@@ -21,6 +21,7 @@ import { SideNavItemComponent } from './side-nav/side-nav-item/side-nav-item.com
 import { AddToFavoritesComponent } from './locations-weather/location-weather/location-weather-upper-section/location-weather-actions/add-to-favorites/add-to-favorites.component';
 import {ReactiveFormsModule} from '@angular/forms';
 import { LocationsWeatherComponent } from './locations-weather/locations-weather.component';
+import { FavoriteLocationComponent } from './favorite-locations/favorite-location/favorite-location.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -36,7 +37,8 @@ import { LocationsWeatherComponent } from './locations-weather/locations-weather
     SideNavComponent,
     SideNavItemComponent,
     AddToFavoritesComponent,
-    LocationsWeatherComponent
+    LocationsWeatherComponent,
+    FavoriteLocationComponent
   ],
     imports: [
         BrowserModule,

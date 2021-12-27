@@ -7,15 +7,17 @@ import {Component, Input, OnInit} from '@angular/core';
 })
 export class LocationWeatherUpperSectionComponent implements OnInit {
   @Input('upperSectionData') upperSectionData: any;
+  @Input('cityKey') cityKey: any;
 
   constructor() { }
 
   ngOnInit(): void {
+    console.log(this.cityKey);
     if (this.upperSectionData) {
       this.upperSectionData = {
-        "Key": this.upperSectionData.Key ?? this.upperSectionData.cityKey,
-        "Temperature": this.upperSectionData.Temperature,
-        "WeatherText": this.upperSectionData.WeatherText,
+        "Key": this.cityKey,
+        "Temperature": this.upperSectionData[0].Temperature,
+        "WeatherText": this.upperSectionData[0].WeatherText,
         "Country": this.upperSectionData.countryId
       }
     }

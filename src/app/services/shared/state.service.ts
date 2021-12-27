@@ -73,13 +73,13 @@ export class StateService {
   // remove location from the fav
   private removeLocationFromFavorites(key: string)  {
     const currentFavs = this.getFavoritesLocationFromStorage();
-    this.favoritesLocations = currentFavs.filter((fav) => fav.toString() !== key.toString())
+    this.favoritesLocations = currentFavs.filter((fav) => fav.Key.toString() !== key.toString())
     return this.favoritesLocations;
   };
 
   // add location to the fav
   private addLocationFromFavorites(key: string){
-    this.favoritesLocations.push(key);
+    this.favoritesLocations.push({Key:key});
   }
 
   // main function which controls which operation to do
