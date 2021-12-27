@@ -7,9 +7,9 @@ import {StateService} from './shared/state.service';
   providedIn: 'root'
 })
 export class LocationWeatherService {
-  private readonly getCityByKeyAPI: string = "http://dataservice.accuweather.com/locations/v1/";
-  private readonly getCurrentWeatherAPI: string = "http://dataservice.accuweather.com/currentconditions/v1";
-  private readonly getForcastAPI: string = "http://dataservice.accuweather.com/forecasts/v1/daily/5day";
+  private readonly getCityByKeyAPI: string = "https://dataservice.accuweather.com/locations/v1/";
+  private readonly getCurrentWeatherAPI: string = "https://dataservice.accuweather.com/currentconditions/v1";
+  private readonly getForcastAPI: string = "https://dataservice.accuweather.com/forecasts/v1/daily/5day";
   constructor(private dataService: DataService,
               private stateService: StateService) { }
   private getDataFromDataService(realDataRoute: string, params?: {}): Observable<any> {

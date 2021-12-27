@@ -9,8 +9,8 @@ import {City} from '../models/city.model';
 export class SearchService {
   private searchObs = new Subject<string>();
   private subscriptions = new Subscription();
-  private readonly citiesAPI: string = "http://dataservice.accuweather.com/locations/v1/cities/autocomplete";
-  private readonly citiesByKeyAPI: string = "http://dataservice.accuweather.com/locations/v1";
+  private readonly citiesAPI: string = "https://dataservice.accuweather.com/locations/v1/cities/autocomplete";
+  private readonly citiesByKeyAPI: string = "https://dataservice.accuweather.com/locations/v1";
   constructor(private dataService: DataService,
               private stateService: StateService) { }
 
