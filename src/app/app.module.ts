@@ -22,6 +22,7 @@ import { AddToFavoritesComponent } from './locations-weather/location-weather/lo
 import {ReactiveFormsModule} from '@angular/forms';
 import { LocationsWeatherComponent } from './locations-weather/locations-weather.component';
 import { FavoriteLocationComponent } from './favorite-locations/favorite-location/favorite-location.component';
+import { MessageModalComponent } from './message-modal/message-modal.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -38,7 +39,8 @@ import { FavoriteLocationComponent } from './favorite-locations/favorite-locatio
     SideNavItemComponent,
     AddToFavoritesComponent,
     LocationsWeatherComponent,
-    FavoriteLocationComponent
+    FavoriteLocationComponent,
+    MessageModalComponent
   ],
     imports: [
         BrowserModule,

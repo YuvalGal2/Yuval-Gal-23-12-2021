@@ -29,7 +29,7 @@ export class LocationWeatherComponent implements OnInit{
   fetchLocationForcast() {
     this.locationWeatherService.getForcastForLocation(this.cityData.Key).subscribe((forcastData) => {
       this.forcastData = this.handleMockData(forcastData);
-    })
+    },(error) => this.locationWeatherService.emitError(error))
   }
   fetchCurrentWeatherForLocation() {
     this.locationWeatherService.getCurrentWeatherForLocation(this.cityData.Key).subscribe((cityCurrentWeather) => {
@@ -42,6 +42,6 @@ export class LocationWeatherComponent implements OnInit{
         this.cityCurrentWeather.countryId = this.cityData.Country.ID;
         this.cityCurrentWeather.cityName = this.cityData.LocalizedName;
       }
-    })
+    },(error => this.locationWeatherService.emitError(error)))
   }
 }

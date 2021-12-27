@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import {Observable, of} from 'rxjs';
+import {Observable, of, Subject} from 'rxjs';
 import {HttpClient} from '@angular/common/http';
 import {environment} from '../../../environments/environment';
 
@@ -7,8 +7,16 @@ import {environment} from '../../../environments/environment';
   providedIn: 'root'
 })
 export class DataService {
-
+  private requestsErrorObs = new Subject<any>();
   constructor(private _http: HttpClient) { }
+
+  getRequestErrorsObs(): Subject<any> {
+    return this.requestsErrorObs;
+  }
+
+  emitRequestError(error: {}) {
+    this.requestsErrorObs.next(error)
+  }
 
   sendRequest(requestUrl: string , requestType: string= 'get', requestParams?: any): Observable<any>{
     switch (requestType.toLowerCase()) {
