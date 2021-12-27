@@ -1,47 +1,42 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, Input, OnDestroy, OnInit} from '@angular/core';
 import {City} from '../../models/city.model';
 import {LocationWeatherService} from '../../services/location-weather.service';
-import {environment} from '../../../environments/environment';
+import {Subscription} from 'rxjs';
 @Component({
   selector: 'app-location-weather',
   templateUrl: './location-weather.component.html',
   styleUrls: ['./location-weather.component.scss']
 })
-export class LocationWeatherComponent implements OnInit{
+export class LocationWeatherComponent implements OnInit, OnDestroy {
+  private subscriptions = new Subscription();
   @Input('cityData') cityData: City
   cityCurrentWeather: any;
   forcastData: any;
+
   constructor(private locationWeatherService: LocationWeatherService) { }
 
-  ngOnInit() {
+  ngOnInit(): void {
     this.fetchCurrentWeatherForLocation();
     this.fetchLocationForcast();
   }
 
-  handleMockData(payload: any): any{
-    if (environment.useMockData) {
-      return payload.filter((dataObject: any) => dataObject.cityKey === this.cityData.Key)[0];
-    }
-    else {
-      return payload;
-    }
+  fetchLocationForcast(): void {
+    this.subscriptions.add(this.locationWeatherService.getForcastForLocation(this.cityData.Key).subscribe((forcastData) => {
+      this.forcastData = forcastData;
+    },(error) => this.locationWeatherService.emitError(error)));
   }
-  fetchLocationForcast() {
-    this.locationWeatherService.getForcastForLocation(this.cityData.Key).subscribe((forcastData) => {
-      this.forcastData = this.handleMockData(forcastData);
-    },(error) => this.locationWeatherService.emitError(error))
-  }
-  fetchCurrentWeatherForLocation() {
-    this.locationWeatherService.getCurrentWeatherForLocation(this.cityData.Key).subscribe((cityCurrentWeather) => {
-      if (!environment.useMockData) {
-        this.cityCurrentWeather = this.handleMockData(cityCurrentWeather)[0];
-      } else {
-        this.cityCurrentWeather = this.handleMockData(cityCurrentWeather);
-      }
+
+  fetchCurrentWeatherForLocation(): void {
+    this.subscriptions.add(this.locationWeatherService.getCurrentWeatherForLocation(this.cityData.Key).subscribe((cityCurrentWeather) => {
+      this.cityCurrentWeather = cityCurrentWeather[0];
       if (this.cityCurrentWeather) {
         this.cityCurrentWeather.countryId = this.cityData.Country.ID;
         this.cityCurrentWeather.cityName = this.cityData.LocalizedName;
       }
-    },(error => this.locationWeatherService.emitError(error)))
+    },
+      (error => this.locationWeatherService.emitError(error))));
+  }
+  ngOnDestroy(): void {
+    this.subscriptions.unsubscribe();
   }
 }

@@ -10,7 +10,7 @@ import {environment} from '../../environments/environment';
   styleUrls: ['./nav-bar.component.scss']
 })
 export class NavBarComponent {
-  env = environment;
+  readonly env = environment;
   @Input('menuItems') menuItems: MenuItem[] = [];
   constructor(private dataService: DataService,
               private stateService: StateService) { }
@@ -18,4 +18,5 @@ export class NavBarComponent {
   toggleSideNav(): void {
     this.stateService.setSideNavState()
   }
+
 }

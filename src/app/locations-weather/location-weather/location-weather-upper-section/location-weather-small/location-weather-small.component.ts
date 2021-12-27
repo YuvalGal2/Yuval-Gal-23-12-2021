@@ -6,13 +6,11 @@ import {Component, Input, OnInit} from '@angular/core';
   styleUrls: ['./location-weather-small.component.scss']
 })
 export class LocationWeatherSmallComponent implements OnInit {
+  readonly codeToFlagCDN: string = "https://flagcdn.com/108x81";
   @Input('upperSectionData') upperSectionData: any;
-   readonly codeToFlagCDN: string = "https://flagcdn.com/108x81";
-   linkToFlag: string = '';
-  constructor() { }
+  linkToFlag: string = '';
 
   ngOnInit(): void {
     this.linkToFlag = `${this.codeToFlagCDN}/${this.upperSectionData.Country.toLowerCase()}.png`;
   }
-
 }

@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
-import {Subject} from 'rxjs';
+import {Subject, Subscription} from 'rxjs';
 import {DataService} from './shared/data.service';
-import {environment} from '../../environments/environment';
 import {StateService} from './shared/state.service';
 import {City} from '../models/city.model';
 @Injectable({
@@ -9,6 +8,7 @@ import {City} from '../models/city.model';
 })
 export class SearchService {
   private searchObs = new Subject<string>();
+  private subscriptions = new Subscription();
   private readonly citiesAPI: string = "http://dataservice.accuweather.com/locations/v1/cities/autocomplete";
   private readonly citiesByKeyAPI: string = "http://dataservice.accuweather.com/locations/v1";
   constructor(private dataService: DataService,
@@ -20,7 +20,7 @@ export class SearchService {
   }
 
   private fetchDataByQuery(query: string) {
-    this.dataService
+    this.subscriptions.add(this.dataService
       .sendRequest(this.citiesAPI, 'get', {
         q: query
       })
@@ -28,16 +28,16 @@ export class SearchService {
         this.stateService.setLocationWeatherData(res);
       }, (error) => {
         this.dataService.emitRequestError(error);
-      });
+      }));
   }
   private fetchDataByKey(key: string) {
-    this.dataService
+    this.subscriptions.add(this.dataService
       .sendRequest(`${this.citiesByKeyAPI}/${key}`, 'get', {})
       .subscribe((res: City) => {
         this.stateService.setLocationWeatherData([res]);
       }, (error) => {
         this.dataService.emitRequestError(error);
-      });
+      }));
   }
 
   fetchData(query: string, specificKey: string = ''): void {

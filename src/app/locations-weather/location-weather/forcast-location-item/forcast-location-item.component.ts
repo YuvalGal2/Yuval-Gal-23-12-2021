@@ -13,7 +13,7 @@ export class ForcastLocationItemComponent implements OnInit {
     const date = new Date(dateStr);
     return date.toLocaleDateString('en-US', { weekday: 'long' });
   }
-  private trimDateFromDataObject() {
+  private trimDateFromDataObject(): void {
     this.forcastData.dateOnly = this.forcastData.Date.split('T');
   }
   ngOnInit(): void {

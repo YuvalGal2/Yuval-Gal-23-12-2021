@@ -8,9 +8,9 @@ import {LocationWeatherService} from '../services/location-weather.service';
 })
 export class FavoriteLocationsComponent implements OnInit {
   constructor(private locationWeatherService: LocationWeatherService) { }
-  favoritesLocationsKeys: {Key:string}[]; //
+  favoritesLocationsKeys: {Key:string}[];
+
   ngOnInit(): void {
     this.favoritesLocationsKeys = this.locationWeatherService.getFavoritesLocationsList();
   }
-
 }

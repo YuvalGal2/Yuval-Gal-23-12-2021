@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import {Observable, Subject} from 'rxjs';
+import {BehaviorSubject, Observable, Subject} from 'rxjs';
 import {City} from '../../models/city.model';
 
 @Injectable({
@@ -8,11 +8,13 @@ import {City} from '../../models/city.model';
 export class StateService {
   favoritesLocations: any = [];
   currentlyViewingCity: string|undefined|null = null
+  darkModeObs = new BehaviorSubject<string>('0');
+  favoritesLocationSubject: Subject<{}> = new Subject<{}>();
   private sideNavObs = new Subject<boolean>();
   private locationWeatherDataSubject = new Subject<City[]>();
   private sideNavState: boolean = false;
-  favoritesLocationSubject: Subject<{}> = new Subject<{}>();
   constructor() { }
+
 
   setLocationWeatherData(citiesData?: City[] ): void {
     this.locationWeatherDataSubject.next(citiesData);
@@ -35,10 +37,6 @@ export class StateService {
     return this.sideNavObs;
   }
 
-
-
-
-
   // get the value from the storage
   private getFavoritesLocationFromStorage() {
     const favoritesCitiesStorage = localStorage.getItem("favoritesCities")
@@ -53,20 +51,21 @@ export class StateService {
 
   }
 
+
+
   // for first load, get the status of the favorites
   getFavoritesLocations(): string[]{
     this.favoritesLocations = this.getFavoritesLocationFromStorage();
     this.setFavoritesLocationsState();
     return this.favoritesLocations;
   }
-
   getFavoritesLocationsState(): Subject<{}> {
     return this.favoritesLocationSubject;
   }
   getFavoritesLocationsAsList(): string[] {
     return this.favoritesLocations;
   }
-   setFavoritesLocationsState() {
+  setFavoritesLocationsState() {
     this.favoritesLocationSubject.next(this.favoritesLocations);
   }
 
@@ -96,4 +95,6 @@ export class StateService {
       }
       this.setFavoritesLocationsState();
   }
+
+
 }

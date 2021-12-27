@@ -5,12 +5,7 @@ import {Component, Input, OnInit} from '@angular/core';
   templateUrl: './location-weather-actions.component.html',
   styleUrls: ['./location-weather-actions.component.scss']
 })
-export class LocationWeatherActionsComponent implements OnInit {
+export class LocationWeatherActionsComponent {
   @Input('locationkey') locationkey: string;
   constructor() { }
-
-  ngOnInit(): void {
-
-  }
-
 }

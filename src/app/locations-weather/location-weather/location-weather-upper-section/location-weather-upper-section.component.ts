@@ -7,9 +7,7 @@ import {Component, Input, OnInit} from '@angular/core';
 })
 export class LocationWeatherUpperSectionComponent implements OnInit {
   @Input('upperSectionData') upperSectionData: any;
-  @Input('cityKey') cityKey: any;
-
-  constructor() { }
+  @Input('cityKey') cityKey: string;
 
   ngOnInit(): void {
     if (this.upperSectionData) {

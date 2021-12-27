@@ -3,6 +3,7 @@ import {MatSidenav} from '@angular/material/sidenav';
 import {StateService} from '../services/shared/state.service';
 import {DataService} from '../services/shared/data.service';
 import {MenuItem} from '../models/menu-item.model';
+import {Subscription} from 'rxjs';
 
 @Component({
   selector: 'app-side-nav',
@@ -12,6 +13,7 @@ import {MenuItem} from '../models/menu-item.model';
 export class SideNavComponent implements OnInit {
   @ViewChild("sidenav", { static: true }) public sidenav: MatSidenav;
   @Input('menuItems') menuItems: MenuItem[] = [];
+  private subscriptions = new Subscription();
   constructor(
     private stateService: StateService,
   ) { }
@@ -20,9 +22,9 @@ export class SideNavComponent implements OnInit {
   }
 
   private listenToAppStateChanges(): void {
-    this.stateService.getSideNavState().subscribe((openState: boolean) => {
+    this.subscriptions.add(this.stateService.getSideNavState().subscribe((openState: boolean) => {
       this.handleStateChange(openState);
-    });
+    }));
   }
   private handleStateChange(openSideNavState: boolean): void {
     switch (openSideNavState) {
