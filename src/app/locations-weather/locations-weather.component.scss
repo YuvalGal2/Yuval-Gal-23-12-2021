@@ -1,0 +1,21 @@
+@import "../scss/variables";
+.dark-mode {
+  background-color: $color-black;
+}
+.location-weather-wrapper {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+}
+app-search {
+  width: 100%;
+}
+.location-wrapper:not(:first-child) {
+  margin-top: 50px;
+}
+
+@media(min-width: $max-size-tablet) {
+  .location-wrapper:not(:first-child) {
+    margin-top: 10px;
+  }
+}

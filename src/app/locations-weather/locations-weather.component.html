@@ -1,0 +1,8 @@
+<div class="location-weather-wrapper">
+  <div class="location-weather-search-section">
+    <app-search [useDefault]="useSearchDefault" [specificCityKey]="specificCityKey"></app-search>
+  </div>
+  <div class="location-wrapper">
+    <app-location-weather *ngFor="let cityData of citiesData" [cityData]="cityData"></app-location-weather>
+  </div>
+</div>

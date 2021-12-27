@@ -1,0 +1,7 @@
+<div class="fav-location" [routerLink]="['/favorites-details/', locationKey]">
+  <div class="fav-location-content" *ngIf="locationData">
+    <p>{{locationData.LocalizedName}}</p>
+    <p>{{locationData.WeatherText}}</p>
+    <p>{{locationData.Temperature?.Metric?.Value}}</p>
+  </div>
+</div>

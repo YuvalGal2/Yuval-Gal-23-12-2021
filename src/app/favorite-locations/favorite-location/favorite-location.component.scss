@@ -1,0 +1,8 @@
+@import "../../scss/variables";
+.fav-location {
+  min-height: 200px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid $color-light-grey;
+}
