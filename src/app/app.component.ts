@@ -12,21 +12,20 @@ import {Subscription} from 'rxjs';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent implements OnInit, OnDestroy{
-  menuItems: MenuItem[] = [];
-  darkModeTheme: boolean = false;
   private subscriptions = new Subscription();
+  darkModeTheme: boolean = false;
+  menuItems: MenuItem[] = [];
+
   constructor(
     private stateService: StateService,
     private dataService: DataService,
     public dialog: MatDialog) {}
 
-  ngOnInit() {
+  ngOnInit(): void {
     this.fetchMenuData();
     this.stateService.getFavoritesLocations();
     this.listenForErrors();
   }
-
-
 
   private listenForErrors(): void {
     this.subscriptions.add(
@@ -49,7 +48,7 @@ export class AppComponent implements OnInit, OnDestroy{
     }))
   }
 
-  ngOnDestroy() {
+  ngOnDestroy(): void {
     this.subscriptions.unsubscribe();
   }
 

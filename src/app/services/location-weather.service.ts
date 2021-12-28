@@ -12,6 +12,7 @@ export class LocationWeatherService {
   private readonly getForcastAPI: string = "https://dataservice.accuweather.com/forecasts/v1/daily/5day";
   constructor(private dataService: DataService,
               private stateService: StateService) { }
+
   private getDataFromDataService(realDataRoute: string, params?: {}): Observable<any> {
       return this.dataService.sendRequest(realDataRoute,'get', params);
   }
@@ -22,35 +23,32 @@ export class LocationWeatherService {
     return this.getDataFromDataService(`${this.getForcastAPI}/${cityId}`);
   }
 
-
-  isFavoriteLocation(key: string): boolean {
+  isFavoriteLocation(key: string): boolean|void {
     if (this.stateService.favoritesLocations.filter((locationObject: any) => locationObject.Key === key).length > 0){
       return true;
     }
-    return false;
   }
 
-  private handleLocationsInFavorites(key: string) {
-    if (this.isFavoriteLocation(key)) {
-      return this.stateService.toggleLocationToFavorites('remove',key);
-    }
-    return this.stateService.toggleLocationToFavorites('add', key);
+  private handleLocationsInFavorites(key: string): void {
+    const isFavoriteLocation = this.isFavoriteLocation(key);
+    this.stateService.toggleLocationToFavorites(isFavoriteLocation ? 'remove' : 'add',key);
   }
-  toggleFavorites(key: string) {
+  toggleFavorites(key: string): void {
     this.handleLocationsInFavorites(key);
   }
 
-  getFavoritesLocationsState() {
+  getFavoritesLocationsState(): Observable<any> {
     return this.stateService.getFavoritesLocationsState();
   }
 
-  getFavoritesLocationsList(): any {
+  getFavoritesLocationsList(): any[] {
     return this.stateService.getFavoritesLocationsAsList();
   }
+
   getCityByKey(cityKey: string):Observable<any> {
     return this.getDataFromDataService(`${this.getCityByKeyAPI}/${cityKey}`, {details: true} );
   }
-  emitError(error: any) {
+  emitError(error: any): void {
     this.dataService.emitRequestError(error);
   }
 

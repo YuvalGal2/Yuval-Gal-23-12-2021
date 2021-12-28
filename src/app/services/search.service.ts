@@ -19,7 +19,7 @@ export class SearchService {
     this.fetchData(query, key);
   }
 
-  private fetchDataByQuery(query: string) {
+  private fetchDataByQuery(query: string): void {
     this.subscriptions.add(this.dataService
       .sendRequest(this.citiesAPI, 'get', {
         q: query
@@ -30,7 +30,8 @@ export class SearchService {
         this.dataService.emitRequestError(error);
       }));
   }
-  private fetchDataByKey(key: string) {
+
+  private fetchDataByKey(key: string): void {
     this.subscriptions.add(this.dataService
       .sendRequest(`${this.citiesByKeyAPI}/${key}`, 'get', {})
       .subscribe((res: City) => {
@@ -42,8 +43,8 @@ export class SearchService {
 
   fetchData(query: string, specificKey: string = ''): void {
     if (specificKey.length === 0) {
-    return this.fetchDataByQuery(query);
+      return this.fetchDataByQuery(query);
     }
     return this.fetchDataByKey(specificKey);
-    }
+  }
 }

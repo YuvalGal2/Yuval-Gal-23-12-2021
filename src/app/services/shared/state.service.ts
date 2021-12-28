@@ -15,13 +15,13 @@ export class StateService {
   private sideNavState: boolean = false;
   constructor() { }
 
-
   setLocationWeatherData(citiesData?: City[] ): void {
     this.locationWeatherDataSubject.next(citiesData);
   }
   getLocationWeatherDataSubject(): Observable<City[]> {
     return this.locationWeatherDataSubject;
   }
+
   setSideNavState(openState:boolean = this.sideNavState): void {
     if (openState === undefined) {
       this.sideNavObs.next(openState);
@@ -33,12 +33,13 @@ export class StateService {
       this.sideNavState = !openState;
     }
   }
+
   getSideNavState(): Observable<boolean> {
     return this.sideNavObs;
   }
 
   // get the value from the storage
-  private getFavoritesLocationFromStorage() {
+  private getFavoritesLocationFromStorage(): any[] {
     const favoritesCitiesStorage = localStorage.getItem("favoritesCities")
     if (favoritesCitiesStorage === null ) {
       return [];
@@ -51,8 +52,6 @@ export class StateService {
 
   }
 
-
-
   // for first load, get the status of the favorites
   getFavoritesLocations(): string[]{
     this.favoritesLocations = this.getFavoritesLocationFromStorage();
@@ -62,27 +61,29 @@ export class StateService {
   getFavoritesLocationsState(): Subject<{}> {
     return this.favoritesLocationSubject;
   }
+
   getFavoritesLocationsAsList(): string[] {
     return this.favoritesLocations;
   }
-  setFavoritesLocationsState() {
+
+  setFavoritesLocationsState(): void {
     this.favoritesLocationSubject.next(this.favoritesLocations);
   }
 
   // remove location from the fav
-  private removeLocationFromFavorites(key: string)  {
+  private removeLocationFromFavorites(key: string): string[]  {
     const currentFavs = this.getFavoritesLocationFromStorage();
     this.favoritesLocations = currentFavs.filter((fav) => fav.Key.toString() !== key.toString())
     return this.favoritesLocations;
   };
 
   // add location to the fav
-  private addLocationFromFavorites(key: string){
+  private addLocationFromFavorites(key: string): void {
     this.favoritesLocations.push({Key:key});
   }
 
   // main function which controls which operation to do
-  toggleLocationToFavorites(action: string, key: string) {
+  toggleLocationToFavorites(action: string, key: string): void {
       switch (action) {
         case 'remove':
          const newFavorites = this.removeLocationFromFavorites(key);
@@ -95,6 +96,4 @@ export class StateService {
       }
       this.setFavoritesLocationsState();
   }
-
-
 }

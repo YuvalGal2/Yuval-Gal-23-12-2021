@@ -44,7 +44,7 @@ export class DataService {
     return this._http.post(requestUrl, requestParams);
   }
 
-  private serialize(object: any) {
+  private serialize(object: any): string {
     let unserializedStringArr = [];
     for (let prop in object)
       if (object.hasOwnProperty(prop)) {
