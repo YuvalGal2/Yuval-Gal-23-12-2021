@@ -4,6 +4,6 @@
 
 export const environment = {
   production: false,
-  weatherAppAPIKey: '76qrCG0xwAAXVpHihlalvFyZ5IpTAIVg',
+  weatherAppAPIKey: 'VkkZhr35Jxu34iELm6V0hrkdFBrqhrxU',
   appName: 'My Herolo APP'
 };
